@@ -1,0 +1,51 @@
+/* layout
+------------------------------------------------------------*/
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $white-cl;
+  font-family: $main-fonts;
+  color: $main-text-cl;
+  font-weight: 400;
+  font-size: 2rem;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none;
+
+  &.active {
+    overflow: hidden;
+  }
+}
+
+//-------------------------------------------------------
+main {
+  flex: 1;
+}
+
+//-------------------------------------------------------
+.l-wrapper {
+  padding: 30px;
+}
+
+.sp-only {
+  display: none;
+}
+@include maxW(767px) {
+  .pc-only {
+    display: none;
+  }
+
+  .sp-only {
+    display: block;
+  }
+}
+//-------------------------------------------------------

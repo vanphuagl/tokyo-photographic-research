@@ -1,0 +1,147 @@
+/* Footer
+------------------------------------------------------------*/
+
+.c-footer {
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__left {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1.8;
+  }
+
+  &__col {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 5px;
+  }
+
+  &__title {
+    min-width: 85px;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__subscribe {
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+
+    span {
+      display: inline-block;
+      transition: 0.5s transform;
+    }
+
+    &:hover {
+      opacity: 0.8;
+
+      span {
+        transform: translateX(30%);
+      }
+    }
+  }
+
+  &__copyright {
+    font-size: 1.3rem;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  &__modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    background-color: $white-cl;
+    padding: 40px;
+    text-align: center;
+
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+       opacity: 1;
+       pointer-events: all;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      padding-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      input {
+        width: 320px;
+        height: 50px;
+        padding: 0 15px;
+        box-sizing: border-box;
+
+        &::placeholder {
+          color: #cdcdcd;
+        }
+      }
+
+      input[type="text"],
+      input[type="mail"] {
+        border: 1px solid #cdcdcd;
+        transition: 0.5s;
+        outline: none;
+      }
+
+      input[type="text"]:focus,
+      input[type="mail"]:focus {
+        border: 1px solid #000;
+      }
+    }
+  }
+
+  &__submit {
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: #000;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    span {
+      border: 1px solid #000;
+      height: 1px;
+      width: 12px;
+      display: block;
+
+      &:nth-of-type(1) {
+        transform: rotate(45deg);
+      }
+
+      &:nth-of-type(2) {
+        transform: translateY(-2px) rotate(-45deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+/* mid
+------------------------------------------------------------*/
+@mixin mid($flex: true) {
+  @if $flex == false {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  } @else {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* breakpoints
+------------------------------------------------------------*/
+@mixin maxW($args) {
+  @media only screen and (max-width: $args) {
+    @content;
+  }
+}
+@mixin minW($args) {
+  @media only screen and (min-width: $args) {
+    @content;
+  }
+}
