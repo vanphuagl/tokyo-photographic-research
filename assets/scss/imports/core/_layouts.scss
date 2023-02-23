@@ -52,18 +52,22 @@ main {
 //-------------------------------------------------------
 .l-wrapper {
   padding: 30px;
+
+  @include maxW(1023px) {
+    padding: 15px;
+  }
 }
 
 .sp-only {
-  display: none;
+  display: none !important;
 }
-@include maxW(767px) {
+@include maxW(1023px) {
   .pc-only {
-    display: none;
+    display: none !important;
   }
 
   .sp-only {
-    display: block;
+    display: block !important;
   }
 }
 //-------------------------------------------------------

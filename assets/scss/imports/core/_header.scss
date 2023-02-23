@@ -3,7 +3,7 @@
 
 .c-header {
   opacity: 0;
-  
+
   &__wrapper {
     position: fixed;
     top: 0;
@@ -27,7 +27,6 @@
     font-size: 2rem;
     font-weight: 500;
     text-transform: uppercase;
-
   }
 
   &__lang {
@@ -48,6 +47,59 @@
       &.active {
         opacity: 1;
       }
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #fff;
+    padding: 0 15px;
+    z-index: 999;
+  }
+
+  &__top {
+    text-transform: uppercase;
+    font-weight: 500;
+    color: $black-cl;
+  }
+
+  &__nav {
+    a {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__copyright {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  &__social {
+    font-size: 1.6rem;
+
+    span {
+      display: block;
+      width: 13px;
+      height: 2px;
+      background-color: $black-cl;
+    }
+  }
+
+  &__icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $black-cl;
+    border: 1px solid $black-cl;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+
+    &.active {
+      background-color: $white-cl
     }
   }
 }

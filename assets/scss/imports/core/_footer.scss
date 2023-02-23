@@ -8,6 +8,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    @include maxW(1023px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__left {
@@ -15,6 +20,16 @@
     font-weight: 500;
     text-transform: uppercase;
     line-height: 1.8;
+
+    @include maxW(1023px) {
+      font-size: 1.3rem;
+      line-height: 1.92;
+      padding-bottom: 30px;
+    }
+  }
+
+  &__mail {
+    text-transform: lowercase;
   }
 
   &__col {
@@ -55,6 +70,10 @@
     font-size: 1.3rem;
     font-weight: 500;
     text-transform: uppercase;
+
+    @include maxW(1023px) {
+      font-size: 1rem;
+    }
   }
 
   &__modal {
@@ -62,7 +81,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 101;
+    z-index: 9999;
     background-color: $white-cl;
     padding: 40px;
     text-align: center;

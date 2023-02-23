@@ -17,7 +17,7 @@
 
   &__logo {
     pointer-events: none;
-    
+
     svg {
       display: block;
       position: absolute;
@@ -27,6 +27,13 @@
       height: 233.61px;
 
       animation: fade 1.8s cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+
+      @include maxW(1023px) {
+        top: 45%;
+        left: 15%;
+        width: 294px;
+        height: 95.39px;
+      }
     }
   }
 }
@@ -48,7 +55,7 @@
   position: fixed;
   inset: 0;
   background-color: $black-cl;
-  z-index: 100;
+  z-index: 9998;
   transition: all 0.5s ease-in-out;
   opacity: 0;
   pointer-events: none;
