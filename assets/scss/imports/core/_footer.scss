@@ -2,6 +2,8 @@
 ------------------------------------------------------------*/
 
 .c-footer {
+  opacity: 0;
+
   &__wrapper {
     display: flex;
     justify-content: space-between;
@@ -70,8 +72,8 @@
     pointer-events: none;
 
     &.active {
-       opacity: 1;
-       pointer-events: all;
+      opacity: 1;
+      pointer-events: all;
     }
 
     h2 {
