@@ -137,3 +137,14 @@ const closeNav = () => {
 };
 
 addEventOnElements(navLinks, "click", closeNav);
+
+/* ------------------------------- tab switch ------------------------------- */
+$(document).on("click", ".tab-link", function () {
+  let tabID = $(this).attr("data-tab");
+
+  $(this).addClass("active").siblings().removeClass("active");
+  $("#tab-" + tabID)
+    .addClass("active")
+    .siblings()
+    .removeClass("active");
+});
