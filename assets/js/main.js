@@ -148,3 +148,49 @@ $(document).on("click", ".tab-link", function () {
     .siblings()
     .removeClass("active");
 });
+
+/* ---------------------------------- slick --------------------------------- */
+
+const $slider = $(".js-detail");
+
+if ($slider.length) {
+  let currentSlide;
+  let slidesCount;
+  let sliderCounter = document.createElement("div");
+  sliderCounter.classList.add("slider__counter");
+
+  let updateSliderCounter = function (slick, currentIndex) {
+    currentSlide = slick.slickCurrentSlide() + 1;
+    slidesCount = slick.slideCount;
+    // $(sliderCounter).text(currentSlide + '/' +slidesCount)
+    $(sliderCounter).text("/" + slidesCount);
+  };
+
+  $slider.on("init", function (event, slick) {
+    $slider.append(sliderCounter);
+    updateSliderCounter(slick);
+  });
+
+  // $slider.on('afterChange', function(event, slick, currentSlide) {
+  //   updateSliderCounter(slick, currentSlide);
+  // });
+
+  $slider.slick({
+    dots: false,
+    infinite: false,
+    arrows: true,
+    outerEdgeLimit: true,
+    slidesToShow: 1,
+    variableWidth: true,
+    draggable: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          arrows: false,
+          draggable: true,
+        },
+      },
+    ],
+  });
+}
