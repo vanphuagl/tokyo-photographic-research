@@ -238,14 +238,12 @@
       position: absolute;
       top: 0;
       right: 0;
-      background-color: red;
     }
 
     .slick-prev {
       position: absolute;
       top: 0;
       left: 0;
-      background-color: blue;
     }
 
     .slick-arrow {
@@ -254,7 +252,7 @@
       padding: 0;
       width: 50%;
       height: 100%;
-      //   background-color: transparent;
+      background-color: transparent;
       z-index: 1;
     }
   }

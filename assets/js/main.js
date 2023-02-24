@@ -194,3 +194,61 @@ if ($slider.length) {
     ],
   });
 }
+
+//
+
+const cursorPrev = document.querySelector(".cursor-prev");
+const cursorNext = document.querySelector(".cursor-next");
+
+function mousemoveHandler(e) {
+  const target = e.target;
+  const tl = gsap.timeline({
+    defaults: {
+      x: e.clientX,
+      y: e.clientY,
+      ease: "power2.out",
+    },
+  });
+
+  // hover section slider
+  if (
+    target.tagName.toLowerCase() === "button" &&
+    target.closest(".slick-next")
+  ) {
+    tl.to(cursorPrev, {
+      opacity: 0,
+    }).to(
+      cursorNext,
+      {
+        opacity: 1,
+      },
+      "-=0.5"
+    );
+  } else if (
+    target.tagName.toLowerCase() === "button" &&
+    target.closest(".slick-prev")
+  ) {
+    tl.to(cursorPrev, {
+      opacity: 1,
+    }).to(
+      cursorNext,
+      {
+        opacity: 0,
+      },
+      "-=0.5"
+    );
+  } else {
+    tl.to(".cursor", {
+      opacity: 0,
+    });
+  }
+}
+
+function mouseleaveHandler() {
+  gsap.to(".cursor", {
+    opacity: 0,
+  });
+}
+
+document.addEventListener("mousemove", mousemoveHandler);
+document.addEventListener("mouseleave", mouseleaveHandler);
