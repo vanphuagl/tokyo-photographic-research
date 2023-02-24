@@ -35,7 +35,7 @@ const contentAnimation = () => {
     duration: 2,
     opacity: 0,
     stagger: 0.4,
-    delay: 0.4,
+    delay: 1,
   });
 };
 
@@ -152,50 +152,51 @@ $(document).on("click", ".tab-link", function () {
 /* ---------------------------------- slick --------------------------------- */
 
 const $slider = $(".js-detail");
+$(window).on("load", function () {
+  if ($slider.length) {
+    let currentSlide;
+    let slidesCount;
+    let sliderCounter = document.createElement("div");
+    sliderCounter.classList.add("slider__counter");
 
-if ($slider.length) {
-  let currentSlide;
-  let slidesCount;
-  let sliderCounter = document.createElement("div");
-  sliderCounter.classList.add("slider__counter");
+    let updateSliderCounter = function (slick, currentIndex) {
+      currentSlide = slick.slickCurrentSlide() + 1;
+      slidesCount = slick.slideCount;
+      // $(sliderCounter).text(currentSlide + '/' +slidesCount)
+      $(sliderCounter).text("/" + slidesCount);
+    };
 
-  let updateSliderCounter = function (slick, currentIndex) {
-    currentSlide = slick.slickCurrentSlide() + 1;
-    slidesCount = slick.slideCount;
-    // $(sliderCounter).text(currentSlide + '/' +slidesCount)
-    $(sliderCounter).text("/" + slidesCount);
-  };
+    $slider.on("init", function (event, slick) {
+      $slider.append(sliderCounter);
+      updateSliderCounter(slick);
+    });
 
-  $slider.on("init", function (event, slick) {
-    $slider.append(sliderCounter);
-    updateSliderCounter(slick);
-  });
+    // $slider.on('afterChange', function(event, slick, currentSlide) {
+    //   updateSliderCounter(slick, currentSlide);
+    // });
 
-  // $slider.on('afterChange', function(event, slick, currentSlide) {
-  //   updateSliderCounter(slick, currentSlide);
-  // });
-
-  $slider.slick({
-    dots: false,
-    infinite: false,
-    arrows: true,
-    outerEdgeLimit: true,
-    slidesToShow: 1,
-    variableWidth: true,
-    draggable: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          arrows: false,
-          draggable: true,
+    $slider.slick({
+      dots: false,
+      infinite: false,
+      arrows: true,
+      outerEdgeLimit: true,
+      slidesToShow: 1,
+      variableWidth: true,
+      draggable: false,
+      responsive: [
+        {
+          breakpoint: 1023,
+          settings: {
+            arrows: false,
+            draggable: true,
+          },
         },
-      },
-    ],
-  });
-}
+      ],
+    });
+  }
+});
 
-//
+// custom cursor
 
 const cursorPrev = document.querySelector(".cursor-prev");
 const cursorNext = document.querySelector(".cursor-next");
@@ -252,3 +253,21 @@ function mouseleaveHandler() {
 
 document.addEventListener("mousemove", mousemoveHandler);
 document.addEventListener("mouseleave", mouseleaveHandler);
+
+/* ---------------------- catch select href not working --------------------- */
+$(function () {
+  let isIOS =
+    (/iPad|iPhone|iPod/.test(navigator.platform) ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) &&
+    !window.MSStream;
+  if (isIOS) {
+    $("a").on("click touchend", function () {
+      let link = $(this).attr("href");
+      let target = $(this).attr("target");
+      if (target === "_blank") {
+        window.open(link, "blank"); // opens in new window as requested
+        return false; // prevent anchor click
+      }
+    });
+  }
+});
