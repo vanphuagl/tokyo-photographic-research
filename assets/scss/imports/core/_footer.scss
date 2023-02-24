@@ -50,17 +50,8 @@
     cursor: pointer;
     transition: 0.3s ease-in-out;
 
-    span {
-      display: inline-block;
-      transition: 0.5s transform;
-    }
-
     &:hover {
       opacity: 0.8;
-
-      span {
-        transform: translateX(30%);
-      }
     }
   }
 

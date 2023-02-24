@@ -14,14 +14,32 @@
 
     mix-blend-mode: difference;
     filter: invert(1);
-    z-index: 99;
+    z-index: 1000;
   }
 
-  &__left {
+  &__logo {
     svg {
       display: block;
       width: 690px;
       height: 223.88px;
+      transition: 0.5s;
+
+      @include maxW(1023px) {
+        width: 289px;
+        height: 93.77px;
+      }
+    }
+
+    &.is-scale {
+      svg {
+        width: 261.97px;
+        height: 85px;
+
+        @include maxW(1023px) {
+          width: 200.33px;
+          height: 65px;
+        }
+      }
     }
   }
 
@@ -58,10 +76,10 @@
 
   &__menu {
     position: fixed;
-    top: 100px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: calc(100vh - 100px);
+    height: 100vh;
     background-color: #fff;
     padding: 0 15px;
     z-index: 999;

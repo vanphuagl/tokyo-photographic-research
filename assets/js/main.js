@@ -1,16 +1,16 @@
 "use strict";
 
 /* --------------------------------- barbajs -------------------------------- */
-function delay(n) {
+const delay = (n) => {
   n = n || 2000;
   return new Promise((done) => {
     setTimeout(() => {
       done();
     }, n);
   });
-}
+};
 
-function pageTransition() {
+const pageTransition = () => {
   var tl = gsap.timeline();
   tl.to(".barba-screen", {
     duration: 1.2,
@@ -27,17 +27,17 @@ function pageTransition() {
     delay: 0.3,
   });
   tl.set(".barba-screen", { left: "-100%" });
-}
+};
 
-function contentAnimation() {
+const contentAnimation = () => {
   var tl = gsap.timeline();
   tl.from(".animate-this", {
-    duration: 1,
+    duration: 2,
     opacity: 0,
     stagger: 0.4,
-    delay: 0.2,
+    delay: 0.4,
   });
-}
+};
 
 $(function () {
   barba.init({
@@ -73,6 +73,23 @@ $(function () {
   });
 });
 
+/* ----------------------------- scroll logo scale ----------------------------- */
+
+window.onscroll = function () {
+  scrollFunction();
+};
+
+const scrollFunction = () => {
+  if (
+    document.body.scrollTop > 100 ||
+    document.documentElement.scrollTop > 100
+  ) {
+    document.querySelector(".c-header__logo").classList.add("is-scale");
+  } else {
+    document.querySelector(".c-header__logo").classList.remove("is-scale");
+  }
+};
+
 /* -------------------- // add event on multiple element -------------------- */
 
 const addEventOnElements = function (elements, eventType, callback) {
@@ -89,7 +106,7 @@ const [modalTogglers, modal, overlay] = [
   document.querySelector("[data-overlay]"),
 ];
 
-const toggleModal = function () {
+const toggleModal = () => {
   modal.classList.toggle("active");
   overlay.classList.toggle("active");
   document.body.classList.toggle("active");
@@ -105,7 +122,7 @@ const [navTogglers, navLinks, navbar, navIcon] = [
   document.querySelector("[data-icon]"),
 ];
 
-const toggleNav = function () {
+const toggleNav = () => {
   navbar.classList.toggle("active");
   navIcon.classList.toggle("active");
   document.body.classList.toggle("active");
@@ -113,7 +130,7 @@ const toggleNav = function () {
 
 addEventOnElements(navTogglers, "click", toggleNav);
 
-const closeNav = function () {
+const closeNav = () => {
   navbar.classList.remove("active");
   navIcon.classList.remove("active");
   document.body.classList.remove("active");

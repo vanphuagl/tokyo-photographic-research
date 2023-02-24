@@ -53,10 +53,6 @@
   }
 
   &__year {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
     &.is-now {
       text-decoration: underline;
       text-decoration-thickness: 2px;
@@ -132,20 +128,12 @@
     text-transform: uppercase;
     width: fit-content;
 
-    span {
-      display: inline-block;
-      transition: 0.5s transform;
-    }
-
     &:hover {
       opacity: 1;
-
-      span {
-        transform: translateX(30%);
-      }
     }
 
     @include maxW(1023px) {
+      opacity: 1;
       padding-top: 30px;
       font-size: 1.5rem;
     }
