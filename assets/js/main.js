@@ -1,6 +1,71 @@
 "use strict";
 
-// refresh page
+/* --------------------------------- barbajs -------------------------------- */
+function delay(n) {
+  n = n || 2000;
+  return new Promise((done) => {
+    setTimeout(() => {
+      done();
+    }, n);
+  });
+}
+
+function pageTransition() {
+  var tl = gsap.timeline();
+  tl.to(".barba-screen", {
+    duration: 1.2,
+    width: "100%",
+    left: "0%",
+    ease: "Expo.easeInOut",
+  });
+
+  tl.to(".barba-screen", {
+    duration: 1,
+    width: "100%",
+    left: "100%",
+    ease: "Expo.easeInOut",
+    delay: 0.3,
+  });
+  tl.set(".barba-screen", { left: "-100%" });
+}
+
+function contentAnimation() {
+  var tl = gsap.timeline();
+  tl.from(".animate-this", {
+    duration: 1,
+    opacity: 0,
+    stagger: 0.4,
+    delay: 0.2,
+  });
+}
+
+$(function () {
+  barba.init({
+    sync: true,
+
+    transitions: [
+      {
+        async leave(data) {
+          const done = this.async();
+
+          pageTransition();
+          await delay(1000);
+          done();
+        },
+
+        async enter(data) {
+          contentAnimation();
+        },
+
+        async once(data) {
+          contentAnimation();
+        },
+      },
+    ],
+  });
+});
+
+/* ------------------------------ refresh page ------------------------------ */
 
 ["pageshow", "load"].forEach(function (evt) {
   window.addEventListener(evt, function () {
@@ -8,30 +73,7 @@
   });
 });
 
-// loading page
-
-const tl = gsap.timeline();
-
-window.addEventListener("load", function () {
-  tl.to(".c-loading__logo svg", {
-    width: "261.973px",
-    height: "85px",
-    top: "30px",
-    left: "30px",
-    duration: 2,
-    delay: 1.5,
-  })
-    .set(".c-loading__logo", { pointerEvents: "all", delay: 0.4 })
-    .set(".c-loading", { pointerEvents: "none", delay: 0.2 })
-    .to(".c-header, .c-footer, main", {
-      opacity: 1,
-      duration: 1,
-      stagger: 0.25,
-      delay: 0.4,
-    });
-});
-
-// add event on multiple element
+/* -------------------- // add event on multiple element -------------------- */
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (let i = 0; i < elements.length; i++) {
@@ -39,7 +81,8 @@ const addEventOnElements = function (elements, eventType, callback) {
   }
 };
 
-// mdaol subscribe toggle
+/* ------------------------- modal subscribe toggle ------------------------- */
+
 const [modalTogglers, modal, overlay] = [
   document.querySelectorAll("[data-modal-toggler]"),
   document.querySelector("[data-modal]"),
@@ -52,3 +95,28 @@ const toggleModal = function () {
   document.body.classList.toggle("active");
 };
 addEventOnElements(modalTogglers, "click", toggleModal);
+
+/* ------------------------- mobile nav menu toggle ------------------------- */
+
+const [navTogglers, navLinks, navbar, navIcon] = [
+  document.querySelectorAll("[data-nav-toggler]"),
+  document.querySelectorAll("[data-nav-link]"),
+  document.querySelector("[data-navbar]"),
+  document.querySelector("[data-icon]"),
+];
+
+const toggleNav = function () {
+  navbar.classList.toggle("active");
+  navIcon.classList.toggle("active");
+  document.body.classList.toggle("active");
+};
+
+addEventOnElements(navTogglers, "click", toggleNav);
+
+const closeNav = function () {
+  navbar.classList.remove("active");
+  navIcon.classList.remove("active");
+  document.body.classList.remove("active");
+};
+
+addEventOnElements(navLinks, "click", closeNav);

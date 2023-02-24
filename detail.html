@@ -44,15 +44,17 @@
     <title>TOKYO PHOTOGRAPHIC RESEARCH</title>
 </head>
 
-<body class="fadeout">
-    <!-- @loading -->
-    <!-- @@loading -->
+<body class="fadeout" data-barba="wrapper">
+    <!-- @barbajs -->
+    <div class="barba-container">
+        <div class="barba-screen"></div>
+    </div>
+    <!-- @@barbajs -->
 
     <!-- @header -->
     <header class="c-header">
         <div class="c-header__container">
             <div class="c-header__wrapper l-wrapper">
-
                 <div class="c-header__left">
                     <a href="/" aria-label="TOKYO PHOTOGRAPHIC RESEARCH">
                         <svg id="Group_578" data-name="Group 578" xmlns="http://www.w3.org/2000/svg"
@@ -144,7 +146,7 @@
                     </a>
                 </div>
 
-                <div class="c-header__right">
+                <div class="c-header__right animate-this pc-only">
                     <a href="/">project</a>
                     <a href="./people.html">people</a>
                     <a href="./about.html">about</a>
@@ -155,18 +157,52 @@
                     </div>
                 </div>
 
+                <div class="c-header__icon sp-only" data-nav-toggler data-icon></div>
             </div>
+        </div>
+
+        <div class="c-header__menu sp-only" data-navbar>
+            <div class="c-header__content">
+                <div class="c-header__top">
+                    <div class="c-header__nav">
+                        <a href="/" data-nav-link>project</a>
+                        <a href="./people.html" data-nav-link>people</a>
+                        <a href="./about.html" data-nav-link>about</a>
+                    </div>
+
+                    <div class="c-header__social">
+                        <a href="https://www.instagram.com/tokyophotographicresearch/" target="_blank"
+                            data-nav-link>instagram</a>
+                        <a href="https://twitter.com/tpr2020news" target="_blank" data-nav-link>twitter</a>
+                        <a href="https://note.com/tpr/" target="_blank" data-nav-link>note</a>
+
+                        <span></span>
+
+                        <p class="c-header__mail" data-modal-toggler>mailnews</p>
+                        <a href="mailto:info@tokyophotographicresearch.jp">contact</a>
+                    </div>
+                </div>
+
+                <p class="c-header__copyright">
+                    ©︎ TOKYO PHOTOGRAPHIC RESEARCH
+                </p>
+            </div>
+        </div>
         </div>
     </header>
     <!-- @@header -->
 
     <!-- @main -->
-    <main>
-        <!-- @section top -->
+    <main data-barba="container" data-barba-namespace="detail-section">
+        <!-- @section detail -->
         <section class="p-detail">
-            hello
+            <div class="p-detail__container">
+                <div class="p-detail__wrapper">
+                    <h1 class="p-detail__heading">hello</h1>
+                </div>
+            </div>
         </section>
-        <!-- @@section top -->
+        <!-- @@section detail -->
     </main>
     <!-- @@main -->
 
@@ -206,7 +242,8 @@
                     </div>
                     <div class="c-footer__col">
                         <p class="c-footer__title">contact</p>
-                        <a href="mailto:info@tokyophotographicresearch.jp">info@tokyophotographicresearch.jp</a>
+                        <a href="mailto:info@tokyophotographicresearch.jp"
+                            class="c-footer__mail">info@tokyophotographicresearch.jp</a>
                     </div>
                 </div>
                 <div class="c-footer__right">
@@ -220,7 +257,7 @@
     <!-- @@footer -->
 
     <!-- @script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.js"></script>
+    <script src="./assets/js/libs.js"></script>
     <script src="./assets/js/main.js"></script>
     <!-- @@script -->
 </body>
