@@ -196,14 +196,14 @@ const swiperFunction = () => {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-    speed: 700,
+    speed: 600,
     slidesPerView: 1.2,
     breakpoints: {
       0: {
         spaceBetween: 10,
         draggable: true,
       },
-      1023: {
+      1024: {
         spaceBetween: 20,
         draggable: false,
       },
