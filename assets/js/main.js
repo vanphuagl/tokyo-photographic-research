@@ -11,20 +11,6 @@ const appHeight = () => {
 window.addEventListener("resize", appHeight);
 appHeight();
 
-/* ------------------------------ home loading ------------------------------ */
-
-$(window).on("load", function () {
-  setTimeout(() => {
-    $(".c-loading__logo").fadeIn("slow");
-  }, 1000);
-  setTimeout(() => {
-    $(".c-loading__logo").fadeOut("slow");
-  }, 2000);
-  setTimeout(() => {
-    $(".c-loading").fadeOut();
-  }, 3000);
-});
-
 /* --------------------------------- barbajs -------------------------------- */
 const delay = (n) => {
   n = n || 2000;
@@ -70,6 +56,15 @@ const contentAnimation = () => {
 
   // play swiper
   swiperFunction();
+
+  // error page
+  errorSection();
+
+  if (document.querySelector(".cursor")) {
+    gsap.to(".cursor", {
+      opacity: 0,
+    });
+  }
 };
 
 $(function () {
@@ -291,7 +286,6 @@ function mouseleaveHandler() {
 
 document.addEventListener("mousemove", mousemoveHandler);
 document.addEventListener("mouseleave", mouseleaveHandler);
-
 /* ---------------------- catch select href not working --------------------- */
 
 $(function () {
@@ -312,10 +306,13 @@ $(function () {
 });
 
 /* -------------------------------- 404 page -------------------------------- */
-
-gsap.from(".p-404__wrapper > span", 1.5, {
-  top: "-100vh",
-  ease: "bounce.out",
-  delay: 1,
-  stagger: 0.2,
-});
+const errorSection = () => {
+  if (document.querySelector(".p-404__wrapper")) {
+    gsap.from(".p-404__wrapper > span", 1.5, {
+      top: "-100vh",
+      ease: "bounce.out",
+      delay: 1,
+      stagger: 0.2,
+    });
+  }
+};

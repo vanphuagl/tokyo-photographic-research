@@ -259,7 +259,7 @@
 
                 <div class="c-header__right pc-only">
                     <a href="/">project</a>
-                    <a href="#">people</a>
+                    <a href="./404.html">people</a>
                     <a href="#">about</a>
                     <div class="c-header__lang">
                         <p class="active">jp</p>
@@ -404,6 +404,19 @@
     <!-- @script -->
     <script src="./assets/js/libs.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script>
+        $(window).on("load", function () {
+            setTimeout(() => {
+                $(".c-loading__logo").fadeIn("slow");
+            }, 1000);
+            setTimeout(() => {
+                $(".c-loading__logo").fadeOut("slow");
+            }, 2000);
+            setTimeout(() => {
+                $(".c-loading").fadeOut();
+            }, 3000);
+        });
+    </script>
     <!-- @@script -->
 </body>
 
