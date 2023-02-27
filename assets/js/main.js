@@ -219,10 +219,10 @@ const swiperFunction = () => {
 
   // deactive button control
   deactiveButton();
-  swiper.on("slideNextTransitionEnd", function () {
+  swiper.on("slideNextTransitionStart", function () {
     deactiveButton();
   });
-  swiper.on("slidePrevTransitionEnd", function () {
+  swiper.on("slidePrevTransitionStart", function () {
     deactiveButton();
   });
 };

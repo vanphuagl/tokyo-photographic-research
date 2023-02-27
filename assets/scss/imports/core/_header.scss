@@ -46,7 +46,7 @@
   &__right {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 28px;
 
     font-size: 2rem;
     font-weight: 500;
@@ -56,7 +56,7 @@
   &__lang {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 7px;
 
     display: none;
 
@@ -125,6 +125,7 @@
   &__social {
     font-size: 1.6rem;
     line-height: 1.4;
+    padding-right: 15px;
 
     span {
       margin: 12px 0;

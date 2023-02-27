@@ -4,11 +4,11 @@
 
 .p-top {
   &__wrapper {
-    margin-top: 390px;
-    margin-bottom: 180px;
+    margin-top: 360px;
+    margin-bottom: 115px;
 
     @include maxW(1023px) {
-      margin-top: 140px;
+      margin-top: 205px;
       margin-bottom: 120px;
     }
   }
@@ -78,7 +78,7 @@
   &__items {
     font-size: 1.8rem;
     font-weight: 500;
-    line-height: 1.7;
+    line-height: 1.5;
 
     img {
       width: 600px;
@@ -95,7 +95,7 @@
 
     @include maxW(1023px) {
       font-size: 1.5rem;
-      line-height: 1.67;
+      line-height: 1.65;
     }
   }
 

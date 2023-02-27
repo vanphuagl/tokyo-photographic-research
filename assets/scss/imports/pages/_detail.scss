@@ -4,11 +4,11 @@
 
 .p-detail {
   &__wrapper {
-    margin-top: 390px;
+    margin-top: 355px;
     margin-bottom: 180px;
 
     @include maxW(1023px) {
-      margin-top: 220px;
+      margin-top: 200px;
       margin-bottom: 120px;
     }
   }
