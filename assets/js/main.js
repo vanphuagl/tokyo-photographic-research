@@ -1,5 +1,16 @@
 "use strict";
 
+/* --------------------------- resize mobile 100vh -------------------------- */
+const appHeight = () => {
+  const doc = document.documentElement;
+  doc.style.setProperty(
+    "--app-height",
+    `${document.documentElement.clientHeight}px`
+  );
+};
+window.addEventListener("resize", appHeight);
+appHeight();
+
 /* ------------------------------ home loading ------------------------------ */
 
 $(window).on("load", function () {
@@ -46,6 +57,7 @@ const pageTransition = () => {
 const contentAnimation = () => {
   // scroll top
   $("html, body").animate({ scrollTop: 0 }, "slow");
+  $("body").removeClass("active");
 
   // show content
   const tl = gsap.timeline();
