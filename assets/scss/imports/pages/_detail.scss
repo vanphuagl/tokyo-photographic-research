@@ -98,7 +98,7 @@
     .tab-content {
       padding-top: 60px;
       opacity: 0;
-      animation: fadeIn 1s ease 1 forwards;
+      animation: fadeTab 1s ease 1 forwards;
 
       display: none;
 
@@ -195,27 +195,28 @@
     }
   }
 
-  // slick
-  &__slick {
+  // swiper
+  &__swiper {
     margin-top: 30px;
 
-    .detail-slick {
+    .detail-swiper {
       display: block;
       margin: 0 -30px;
       padding: 0 30px;
       overflow: hidden;
+      position: relative;
     }
 
     @include maxW(1023px) {
       margin-top: 25px;
 
-      .detail-slick {
+      .detail-swiper {
         margin: 0 -15px;
         padding: 0 15px;
       }
     }
 
-    .slider__counter {
+    .slider-total {
       position: absolute;
       bottom: 0;
       right: 30px;
@@ -230,23 +231,19 @@
       }
     }
 
-    .slick-list {
-      overflow: visible;
-    }
-
-    .slick-next {
+    .swiper-button-next {
       position: absolute;
       top: 0;
       right: 0;
     }
 
-    .slick-prev {
+    .swiper-button-prev {
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .slick-arrow {
+    .button-swiper {
       font-size: 0;
       border: 0;
       padding: 0;
@@ -255,28 +252,30 @@
       background-color: transparent;
       z-index: 1;
       cursor: none;
+
+      &::after {
+        content: "";
+      }
+
+      @include maxW(1023px) {
+        display: none;
+      }
     }
   }
 
-  &__item {
-    padding-left: 20px;
+  .swiper-slide {
     counter-increment: item;
-    position: relative;
-
-    @include maxW(1023px) {
-      padding-left: 10px;
-    }
 
     &:after {
       content: counter(item);
       font-size: 1.8rem;
       font-weight: 500;
       display: block;
-      margin-top: 20px;
+      padding-top: 20px;
 
       @include maxW(1023px) {
         font-size: 1.3rem;
-        margin-top: 10px;
+        padding-top: 10px;
       }
     }
 
@@ -284,15 +283,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-
-      @include maxW(1023px) {
-        width: 334px;
-        max-height: 233px;
-      }
-    }
-
-    &:first-child {
-      padding-left: 0;
     }
   }
 

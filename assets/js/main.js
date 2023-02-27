@@ -1,5 +1,19 @@
 "use strict";
 
+/* ------------------------------ home loading ------------------------------ */
+
+$(window).on("load", function () {
+  setTimeout(() => {
+    $(".c-loading__logo").fadeIn("slow");
+  }, 1000);
+  setTimeout(() => {
+    $(".c-loading__logo").fadeOut("slow");
+  }, 2000);
+  setTimeout(() => {
+    $(".c-loading").fadeOut();
+  }, 3000);
+});
+
 /* --------------------------------- barbajs -------------------------------- */
 const delay = (n) => {
   n = n || 2000;
@@ -11,7 +25,7 @@ const delay = (n) => {
 };
 
 const pageTransition = () => {
-  var tl = gsap.timeline();
+  const tl = gsap.timeline();
   tl.to(".barba-screen", {
     duration: 1.2,
     width: "100%",
@@ -30,13 +44,20 @@ const pageTransition = () => {
 };
 
 const contentAnimation = () => {
-  var tl = gsap.timeline();
+  // scroll top
+  $("html, body").animate({ scrollTop: 0 }, "slow");
+
+  // show content
+  const tl = gsap.timeline();
   tl.from(".animate-this", {
-    duration: 2,
+    duration: 1,
     opacity: 0,
     stagger: 0.4,
     delay: 1,
   });
+
+  // play swiper
+  swiperFunction();
 };
 
 $(function () {
@@ -47,7 +68,6 @@ $(function () {
       {
         async leave(data) {
           const done = this.async();
-
           pageTransition();
           await delay(1000);
           done();
@@ -90,7 +110,7 @@ const scrollFunction = () => {
   }
 };
 
-/* -------------------- // add event on multiple element -------------------- */
+/* ---------------------- add event on multiple element --------------------- */
 
 const addEventOnElements = function (elements, eventType, callback) {
   for (let i = 0; i < elements.length; i++) {
@@ -149,54 +169,53 @@ $(document).on("click", ".tab-link", function () {
     .removeClass("active");
 });
 
-/* ---------------------------------- slick --------------------------------- */
-
-const $slider = $(".js-detail");
-$(window).on("load", function () {
-  if ($slider.length) {
-    let currentSlide;
-    let slidesCount;
-    let sliderCounter = document.createElement("div");
-    sliderCounter.classList.add("slider__counter");
-
-    let updateSliderCounter = function (slick, currentIndex) {
-      currentSlide = slick.slickCurrentSlide() + 1;
-      slidesCount = slick.slideCount;
-      // $(sliderCounter).text(currentSlide + '/' +slidesCount)
-      $(sliderCounter).text("/" + slidesCount);
-    };
-
-    $slider.on("init", function (event, slick) {
-      $slider.append(sliderCounter);
-      updateSliderCounter(slick);
-    });
-
-    // $slider.on('afterChange', function(event, slick, currentSlide) {
-    //   updateSliderCounter(slick, currentSlide);
-    // });
-
-    $slider.slick({
-      dots: false,
-      infinite: false,
-      arrows: true,
-      outerEdgeLimit: true,
-      slidesToShow: 1,
-      variableWidth: true,
-      draggable: false,
-      responsive: [
-        {
-          breakpoint: 1023,
-          settings: {
-            arrows: false,
-            draggable: true,
-          },
-        },
-      ],
-    });
+/* --------------------------------- swiper --------------------------------- */
+const deactiveButton = () => {
+  if ($(".button-swiper").hasClass("swiper-button-disabled")) {
+    $(".button-swiper").removeClass("swiper-button-disabled");
+    $(".button-swiper").attr("aria-disabled", "false");
+    $(".button-swiper").removeAttr("disabled");
   }
-});
+};
 
-// custom cursor
+const swiperFunction = () => {
+  const swiper = new Swiper(".swiperDetail", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    speed: 700,
+    slidesPerView: 1.2,
+    breakpoints: {
+      0: {
+        spaceBetween: 10,
+        draggable: true,
+      },
+      1023: {
+        spaceBetween: 20,
+        draggable: false,
+      },
+    },
+    on: {
+      beforeInit: function () {
+        let numOfSlides =
+          this.wrapperEl.querySelectorAll(".swiper-slide").length;
+        document.querySelector(".slider-total").innerHTML = "/" + numOfSlides;
+      },
+    },
+  });
+
+  // deactive button control
+  deactiveButton();
+  swiper.on("slideNextTransitionEnd", function () {
+    deactiveButton();
+  });
+  swiper.on("slidePrevTransitionEnd", function () {
+    deactiveButton();
+  });
+};
+
+/* ------------------------------ custom cursor ----------------------------- */
 
 const cursorPrev = document.querySelector(".cursor-prev");
 const cursorNext = document.querySelector(".cursor-next");
@@ -211,50 +230,58 @@ function mousemoveHandler(e) {
     },
   });
 
-  // hover section slider
   if (
-    target.tagName.toLowerCase() === "button" &&
-    target.closest(".slick-next")
+    document.querySelector(".swiper-button-next") &&
+    document.querySelector(".swiper-button-prev")
   ) {
-    tl.to(cursorPrev, {
-      opacity: 0,
-    }).to(
-      cursorNext,
-      {
-        opacity: 1,
-      },
-      "-=0.5"
-    );
-  } else if (
-    target.tagName.toLowerCase() === "button" &&
-    target.closest(".slick-prev")
-  ) {
-    tl.to(cursorPrev, {
-      opacity: 1,
-    }).to(
-      cursorNext,
-      {
+    // hover section slider
+    if (
+      target.tagName.toLowerCase() === "button" &&
+      target.closest(".swiper-button-next")
+    ) {
+      tl.to(cursorPrev, {
         opacity: 0,
-      },
-      "-=0.5"
-    );
-  } else {
-    tl.to(".cursor", {
-      opacity: 0,
-    });
+      }).to(
+        cursorNext,
+        {
+          opacity: 1,
+        },
+        "-=0.5"
+      );
+    } else if (
+      target.tagName.toLowerCase() === "button" &&
+      target.closest(".swiper-button-prev")
+    ) {
+      tl.to(cursorPrev, {
+        opacity: 1,
+      }).to(
+        cursorNext,
+        {
+          opacity: 0,
+        },
+        "-=0.5"
+      );
+    } else {
+      tl.to(".cursor", {
+        opacity: 0,
+      });
+    }
   }
 }
 
 function mouseleaveHandler() {
-  gsap.to(".cursor", {
-    opacity: 0,
-  });
+  if (document.querySelector(".cursor")) {
+    gsap.to(".cursor", {
+      opacity: 0,
+    });
+  }
 }
 
 document.addEventListener("mousemove", mousemoveHandler);
 document.addEventListener("mouseleave", mouseleaveHandler);
 
 /* ---------------------- catch select href not working --------------------- */
+
 $(function () {
   let isIOS =
     (/iPad|iPhone|iPod/.test(navigator.platform) ||
@@ -270,4 +297,13 @@ $(function () {
       }
     });
   }
+});
+
+/* -------------------------------- 404 page -------------------------------- */
+
+gsap.from(".p-404__wrapper > span", 1.5, {
+  top: "-100vh",
+  ease: "bounce.out",
+  delay: 1,
+  stagger: 0.2,
 });

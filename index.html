@@ -31,6 +31,7 @@
 
     <!-- @adobe font -->
     <script>
+
         (function (d) {
             var config = {
                 kitId: 'luw5tsy',
@@ -45,6 +46,24 @@
 </head>
 
 <body class="fadeout" data-barba="wrapper">
+
+    <!-- @custom cursor -->
+    <div class="cursor cursor-prev">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16.16" viewBox="0 0 30 16.16">
+            <path id="Path_45" data-name="Path 45" d="M4.57-14.811l8.08-8.08v6.7H34.57v2.768H12.65v6.7Z"
+                transform="translate(-4.57 22.891)" fill="#fff" />
+        </svg>
+    </div>
+    <div class="cursor cursor-next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16.16" viewBox="0 0 30 16.16">
+            <g id="cursor_next" transform="translate(-1225.57 -895.109)">
+                <path id="Path_45" data-name="Path 45" d="M34.57-14.811l-8.08-8.08v6.7H4.57v2.768h21.92v6.7Z"
+                    transform="translate(1221 918)" fill="#fff" />
+            </g>
+        </svg>
+    </div>
+    <!-- @@custom cursor -->
+
     <!-- @barbajs -->
     <div class="barba-container">
         <div class="barba-screen"></div>
@@ -263,15 +282,16 @@
                     </div>
 
                     <div class="c-header__social">
-                        <a href="https://www.instagram.com/tokyophotographicresearch/" target="_blank"
-                            data-nav-link>instagram</a>
-                        <a href="https://twitter.com/tpr2020news" target="_blank" data-nav-link>twitter</a>
-                        <a href="https://note.com/tpr/" target="_blank" data-nav-link>note</a>
+                        <a href="https://www.instagram.com/tokyophotographicresearch/" aria-label="INSTAGRAM"
+                            target="_blank" data-nav-link>instagram</a>
+                        <a href="https://twitter.com/tpr2020news" aria-label="TWITTER" target="_blank"
+                            data-nav-link>twitter</a>
+                        <a href="https://note.com/tpr/" aria-label="NOTE" target="_blank" data-nav-link>note</a>
 
                         <span></span>
 
                         <p class="c-header__mail" data-modal-toggler>mailnews</p>
-                        <a href="mailto:info@tokyophotographicresearch.jp">contact</a>
+                        <a href="mailto:info@tokyophotographicresearch.jp" aria-label="MAIL">contact</a>
                     </div>
                 </div>
 
@@ -359,15 +379,16 @@
                     <div class="c-footer__col">
                         <p class="c-footer__title">social</p>
                         <div class="c-footer__social">
-                            <a href="https://www.instagram.com/tokyophotographicresearch/" target="_blank">instagram</a>
-                            <a href="https://twitter.com/tpr2020news" target="_blank">twitter</a>
-                            <a href="https://note.com/tpr/" target="_blank">note</a>
+                            <a href="https://www.instagram.com/tokyophotographicresearch/" aria-label="INSTAGRAM"
+                                target="_blank">instagram</a>
+                            <a href="https://twitter.com/tpr2020news" aria-label="TWITTER" target="_blank">twitter</a>
+                            <a href="https://note.com/tpr/" aria-label="NOTE" target="_blank">note</a>
                         </div>
                     </div>
                     <div class="c-footer__col">
                         <p class="c-footer__title">contact</p>
-                        <a href="mailto:info@tokyophotographicresearch.jp"
-                            class="c-footer__mail">info@tokyophotographicresearch.jp</a>
+                        <a href="mailto:info@tokyophotographicresearch.jp" class="c-footer__mail"
+                            aria-label="MAIL">info@tokyophotographicresearch.jp</a>
                     </div>
                 </div>
                 <div class="c-footer__right">
@@ -383,19 +404,6 @@
     <!-- @script -->
     <script src="./assets/js/libs.js"></script>
     <script src="./assets/js/main.js"></script>
-    <script>
-        $(window).on("load", function () {
-            setTimeout(() => {
-                $(".c-loading__logo").fadeIn("slow");
-            }, 1000);
-            setTimeout(() => {
-                $(".c-loading__logo").fadeOut("slow");
-            }, 2000);
-            setTimeout(() => {
-                $(".c-loading").fadeOut();
-            }, 3000);
-        })
-    </script>
     <!-- @@script -->
 </body>
 
