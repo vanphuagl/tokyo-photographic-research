@@ -299,12 +299,14 @@
       font-size: 1.6rem;
       font-weight: 500;
       line-height: 1.84;
+      width: 100%;
     }
 
     span {
       display: block;
       padding-top: 20px;
       font-weight: bold;
+      width: 70%;
     }
 
     @include maxW(1023px) {
@@ -321,6 +323,7 @@
 
       span {
         padding-top: 0;
+        width: 100%;
       }
     }
   }
