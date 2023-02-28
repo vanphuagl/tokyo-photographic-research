@@ -42,26 +42,21 @@
 }
 
 // barbajs
-.barba-screen {
-  position: relative;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  background-color: $black-cl;
-  width: 0%;
-  height: 100%;
-}
-
-.barba-container {
+.loader{
   position: fixed;
   top: 0;
   left: 0;
+  pointer-events: none;
+  z-index: 1005;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
-  z-index: 1005;
-  pointer-events: none;
-  cursor: none;
+}
+.page-transition{
+  position: absolute;
+  top: 0;
+  background-color: $black-cl;
+  width: 100%;
+  height: 0%;
 }
 
 // cursor

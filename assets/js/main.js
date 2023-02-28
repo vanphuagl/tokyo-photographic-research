@@ -22,22 +22,24 @@ const delay = (n) => {
 };
 
 const pageTransition = () => {
-  const tl = gsap.timeline();
-  tl.to(".barba-screen", {
-    duration: 1.2,
-    width: "100%",
-    left: "0%",
-    ease: "Expo.easeInOut",
+  var timeline = gsap.timeline();
+
+  timeline.to(".page-transition", {
+    duration: 1,
+    height: "100%",
+    top: "0%",
   });
 
-  tl.to(".barba-screen", {
-    duration: 1,
-    width: "100%",
-    left: "100%",
-    ease: "Expo.easeInOut",
+  timeline.to(".page-transition", {
+    duration: 0.8,
+    height: "100%",
+    top: "100%",
     delay: 0.3,
   });
-  tl.set(".barba-screen", { left: "-100%" });
+
+  timeline.set(".page-transition", {
+    top: "-100%",
+  });
 };
 
 const contentAnimation = () => {
@@ -46,7 +48,7 @@ const contentAnimation = () => {
   $("body").removeClass("active");
 
   // show content
-  const tl = gsap.timeline();
+  var tl = gsap.timeline();
   tl.from(".animate-this", {
     duration: 1,
     opacity: 0,
