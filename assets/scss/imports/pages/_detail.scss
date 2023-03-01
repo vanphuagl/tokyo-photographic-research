@@ -291,28 +291,27 @@
   &__pager {
     display: flex;
     align-items: center;
-    gap: 155px;
-
+    gap: 150px;
+    width: 60%;
     margin-top: 180px;
 
     a {
       font-size: 1.6rem;
       font-weight: 500;
       line-height: 1.84;
-      width: 100%;
     }
 
     span {
       display: block;
       padding-top: 20px;
       font-weight: bold;
-      width: 70%;
     }
 
     @include maxW(1023px) {
       flex-direction: column;
       align-items: flex-start;
       gap: 20px;
+      width: 100%;
 
       margin-top: 80px;
 
@@ -323,7 +322,6 @@
 
       span {
         padding-top: 0;
-        width: 100%;
       }
     }
   }

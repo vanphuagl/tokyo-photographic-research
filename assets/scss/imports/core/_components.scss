@@ -42,7 +42,7 @@
 }
 
 // barbajs
-.loader{
+.loader {
   position: fixed;
   top: 0;
   left: 0;
@@ -51,7 +51,7 @@
   width: 100%;
   height: 100vh;
 }
-.page-transition{
+.page-transition {
   position: absolute;
   top: 0;
   background-color: $black-cl;
@@ -69,4 +69,9 @@
   left: -13px;
   z-index: 999;
   mix-blend-mode: difference;
+}
+
+.closePopup {
+  opacity: 0 !important;
+  pointer-events: none;
 }
